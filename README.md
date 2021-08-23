@@ -6,7 +6,7 @@ I've started by creating an AutoML run using the *Bank Marketing* dataset provid
 
 The dataset was first registered into the azure ml workspace:
 
-![screenscreenshots\dataset.PNG](screenshots\dataset.PNG)
+![dataset](screenshots/dataset.PNG)
 
 then an *automl* run was created and run using the code provided into `lancia\set_up_part1.ipynb`
 
@@ -45,15 +45,15 @@ automl.wait_for_completion(show_output=True)
 
 resulting in an experiment run called `AZMLE-project2-step2` logged here:
 
-![screenshots\experiment_run.PNG](screenshots\experiment_run.PNG)
+![screenshots/experiment_run.PNG](screenshots/experiment_run.PNG)
 
 the best model achieved is a voting ensamble as in the previous project.
 
-![model](screenshots\best_model.PNG)
+![model](screenshots/best_model.PNG)
 
 The model was deploy first without any insight enabled:
 
-![no-ins](screenshots\deployed_no_insight.PNG)
+![no-ins](screenshots/deployed_no_insight.PNG)
 
 then using the code in `lancia\enable_insight.py` insight were enabled
 
@@ -79,20 +79,20 @@ service.update(enable_app_insights=True)
 
 obtaining
 
-![insights](screenshots\deployed_w_insight.PNG)
+![insights](screenshots/deployed_w_insight.PNG)
 
 **Important** the code requires to authenticate to the correct workspace thus a `config.json` file is needed in the same or parents directory.
 
 With a endopoint up and running we can use the file `log.py` to retrieve the logs:
 
-![log](screenshots\log.PNG)
+![log](screenshots/log.PNG)
 
 When the endpoint is up and running we can use the swagger.json file with the Swagger tool to get info and documentation about the exposed REST API.
 
 We created a webserver to expose the swagger.json file from the same domain as the swagger service and obtained:
 
-![swagger](screenshots\swagger1.PNG)
-![swagger](screenshots\swagger2.PNG)
+![swagger](screenshots/swagger1.PNG)
+![swagger](screenshots/swagger2.PNG)
 
 I've modified the `endopoint.py` adding the authentication parameters required for the API **and** by rearranging the payload of the request to match the signature from the swagger doc.
 
@@ -150,40 +150,40 @@ resp = requests.post(scoring_uri, input_data, headers=headers)
 print(resp.json())
 ```
 
-![endpont](screenshots\endpoint.PNG)
+![endpont](screenshots/endpoint.PNG)
 
 This script run produced a `data.json` and proved working. So i can test the endpoint performances using apache bench.
 
-![bench](screenshots\bench1.PNG)
-![bench](screenshots\bench.PNG)
+![bench](screenshots/bench1.PNG)
+![bench](screenshots/bench.PNG)
 
 
 ## Pipeline
 
 Using the provied notebook we created a pipeline
 
-![pipe_crated](screenshots\pipepline_created.PNG)
+![pipe_crated](screenshots/pipepline_created.PNG)
 
 and we exposed that pipelien with an endpoint
 
-![pipe_crated](screenshots\pipe_endpoint.PNG)
+![pipe_crated](screenshots/pipe_endpoint.PNG)
 
 The pipeline is composed of two steps:
 
 * the dataset
 * the automl module
 
-![pipe_strucure](screenshots\pipe_overview.PNG)
+![pipe_strucure](screenshots/pipe_overview.PNG)
 
 in the same screenshot above we can see the pipeline overview showing hte REST endopint
 
 If we call this endpoint from a jupyter notebook we can see in the widged the status of the run and the structure of the pipeline
 
-![pipe_vidjet](screenshots\widget.PNG)
+![pipe_vidjet](screenshots/widget.PNG)
 
 and the submitted runs in the azure ml studio
 
-![pipe_runs](screenshots\runs.PNG)
+![pipe_runs](screenshots/runs.PNG)
 
 ## Screencast link
 
