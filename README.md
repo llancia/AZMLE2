@@ -13,6 +13,11 @@ Diagram of the process:
 - Trigger the pipeline with an api request
 - Document everythig and record the screencast 
 
+architechtural diagram
+
+![arch](screenshots/arch.PNG)
+
+
 ## Automated ML Experiment and Endpoint
 
 I've started by creating an AutoML run using the *Bank Marketing* dataset provided.
